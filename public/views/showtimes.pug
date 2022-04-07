@@ -1,0 +1,115 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css")
+  link(rel='stylesheet' href='./styles/showtimes.css')
+  link(rel="shortcut icon" href="#")
+  script(type='text/javascript' src='https://code.jquery.com/jquery-latest.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/6.2.0/d3.min.js' integrity='sha512-C2RveGuPIWqkaLAluvoxyiaN1XYNe5ss11urhZWZYBUA9Ydgj+hfGKPcxCzTwut1/fmjEZR7Ac35f2aycT8Ogw==' crossorigin='anonymous')
+  script(type='text/javascript' src='../scripts/showtimes.js')
+  title Movie Details
+body
+  section.hero.is-danger
+    div.hero-body
+      p.title
+        | Showtimes
+      p.subtitle
+        | Give me something to do!
+  div.columns
+    div.column.is-one-fourth
+      div.container.is-fluid
+        form(action='/showtimes_api', method='post')
+          div.field.is-horizontal
+            div.field-label.is-normal
+              label.label Location:
+            div.field-body
+              div.field
+                span.select
+                  select#location(name='location')
+                    option(selected='' value='Oshawa Cinemas') Oshawa Cinemas
+                    option(value='Anywhere Else') Anywhere Else
+          div.field.is-horizontal
+            div.field-label.is-normal
+              label.label Date:
+            div.field-body
+              div.field
+                input#date.input(type='date' name='selected_date')
+          div.field.is-horizontal
+            div.field-label
+            div.field-body
+              div.control
+                button#submit.button.is-danger Submit
+      div.container.showtimes
+        table#showtimes
+          tbody
+            each showtime in showtimesList 
+              tr.showtimeRow(id=showtime.id)
+                th=showtime.title 
+                  td 
+                    ul 
+                      each time in showtime.times 
+                        li=time
+                        input(type="hidden", name="movie_id", value=showtime.id)
+                        input(type="hidden", name="movie_title", value=showtime.title)
+                        input(type="hidden", name="location", value=showtime.location)
+                        input(type="hidden", name="selected_date", value=showtime.date)
+                        input(type="hidden", name="start_time", value=time)
+    div.column.is-one-fifth
+      // filler column for space
+    div.column
+      div#movieDetails.container.is-max-desktop
+        div.field.is-grouped.is-grouped-centered
+          img#poster(src='' alt='Movie Poster')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Title:
+          div.field-body
+            div.field
+              input#title.input(type='text' readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Year:
+          div.field-body
+            div.field
+              input#year.input(type='text' readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Genre:
+          div.field-body
+            .field
+              input#genre.input(type='text' readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Runtime:
+          div.field-body
+            div.field
+              input#runtime.input(type='text' readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Director:
+          div.field-body
+            div.field
+              input#director.input(type='text' readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Writer:
+          div.field-body
+            div.field
+              textarea#writer.textarea(readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Actors:
+          div.field-body
+            div.field
+              textarea#actors.textarea(readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Plot:
+          div.field-body
+            div.field
+              textarea#plot.textarea(readonly='')
+        div.field.is-horizontal
+          div.field-label.is-normal
+            label.label Rating:
+          div#rating.field-body

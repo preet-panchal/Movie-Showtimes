@@ -1,0 +1,31 @@
+tr {
+    border-bottom: 1px solid grey;
+    margin: 20px 0px;
+}
+
+th {
+    padding-right: 1rem;
+    cursor: pointer;
+}
+
+.showtimes {
+    padding-top: 2.5rem;
+    margin-left: 40px;
+    justify-content: center;
+}
+
+.columns {
+    padding: 2rem;
+}
+
+#date, #location {
+    width: 300px;
+}
+
+ul {
+    padding-bottom: 20px;
+}
+
+#showtimes {
+    width: 300px;
+}

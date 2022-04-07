@@ -1,0 +1,28 @@
+{
+  "name": "lab08-movie-information",
+  "version": "1.0.0",
+  "description": "csci3230u lab08",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preet-panchal/Lab08-Movie-Information.git"
+  },
+  "author": "Preet Panchal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/preet-panchal/Lab08-Movie-Information/issues"
+  },
+  "homepage": "https://github.com/preet-panchal/Lab08-Movie-Information#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
