@@ -4,7 +4,6 @@ window.onload = function(){
 
     $("#submit").click(function() {
         console.log($('#date').val());
-        //generateTable();
     })
 
     $('.showtimeRow').click(function() {
@@ -13,46 +12,6 @@ window.onload = function(){
 
     $('#movieDetails').hide();
 }
-
-// Useless
-/* function generateTable() {
-    fetch('showtimes.json')
-    .then((response) => response.json())
-    .then(function(showtimes) {
-        console.log("show");
-        var selectedDate = new Date($('#date').val());
-        for (let i = 0; i < showtimes.length; i++) {
-            var showtimeDate = new Date(showtimes[i].date);   
-            if(selectedDate.toLocaleDateString() == showtimeDate.toLocaleDateString()){
-                
-                var newHeader = document.createElement('th');
-                newHeader.innerText = showtimes[i].title;
-
-                var newTimes = document.createElement('td');
-                var newTimesList = document.createElement('ul');
-
-                for (let j = 0; j < showtimes[i].times.length; j++) {
-                    var newListItem = document.createElement('li');
-                    newListItem.textContent = showtimes[i].times[j];
-                    newTimesList.appendChild(newListItem);
-                }
-
-                newTimes.appendChild(newTimesList);
-
-                var newTableRow = document.createElement('tr');
-                newTableRow.setAttribute('class', 'showtimeRow');
-                newTableRow.setAttribute('id', showtimes[i].id);
-                newTableRow.appendChild(newHeader);
-                newTableRow.appendChild(newTimes);
-                $('#showtimes').append(newTableRow);
-            }
-        }
-
-        $('.showtimeRow').click(function() {
-            populateForm($(this).attr('id'));
-        });
-    });
-} */
 
 function populateForm(id) {
 
@@ -82,5 +41,4 @@ function populateForm(id) {
     });
 
     $('#movieDetails').show();
-
 }
